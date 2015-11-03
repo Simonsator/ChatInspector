@@ -1,0 +1,4 @@
+main: chatController.main.Main
+name: ChatInspector
+version: 1.0.1
+author: Simonsator
