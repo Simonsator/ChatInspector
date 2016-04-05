@@ -1,11 +1,11 @@
-package chatController.utilities;
+package de.simonsator.chatinspector.utilities;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import chatController.main.Main;
+import de.simonsator.chatinspector.main.Main;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;

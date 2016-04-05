@@ -1,10 +1,10 @@
-package chatController.listener;
+package de.simonsator.chatinspector.listener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
-import chatController.main.Main;
+import de.simonsator.chatinspector.main.Main;
 import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;

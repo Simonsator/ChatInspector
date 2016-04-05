@@ -1,4 +1,4 @@
-package chatController.main;
+package de.simonsator.chatinspector.main;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,8 +7,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-import chatController.listener.ChatListener;
-import chatController.utilities.Config;
+import de.simonsator.chatinspector.listener.ChatListener;
+import de.simonsator.chatinspector.utilities.Config;
 import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.plugin.Plugin;
