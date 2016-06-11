@@ -3,39 +3,42 @@ package de.simonsator.chatinspector.utilities;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import de.simonsator.chatinspector.main.Main;
+import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
 
 public class Config {
-	public static Configuration ladeConfig() throws IOException {
-		if (!Main.main.getDataFolder().exists()) {
-			Main.main.getDataFolder().mkdir();
+	public static Configuration loadConfig() throws IOException {
+		if (!Main.getInstance().getDataFolder().exists()) {
+			Main.getInstance().getDataFolder().mkdir();
 		}
-		File file = new File(Main.main.getDataFolder().getPath(), "config.yml");
+		File file = new File(Main.getInstance().getDataFolder().getPath(), "config.yml");
 		if (!file.exists()) {
 			file.createNewFile();
 		}
 		Configuration config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(file);
 		if (config.getString("Messages.ChatPrefix").equals("")) {
-			config.set("Messages.ChatPrefix", "§6[§1ChatInspector§6] ");
+			config.set("Messages.ChatPrefix", "&6[&1ChatInspector&6] ");
 		}
 		if (config.getString("Messages.DoNotWriteThat").equals("")) {
-			config.set("Messages.DoNotWriteThat", "§cYou are not allowed to write that.");
+			config.set("Messages.DoNotWriteThat", "&cYou are not allowed to write that.");
 		}
 		if (config.getString("Messages.WritingToFast").equals("")) {
-			config.set("Messages.WritingToFast", "§cYou are writing to fast.");
+			config.set("Messages.WritingToFast", "&cYou are writing to fast.");
 		}
 		if (config.getString("Messages.YouAreReapiting").equals("")) {
-			config.set("Messages.YouAreReapiting", "§cYou are repeating yourself");
+			config.set("Messages.YouAreReapiting", "&cYou are repeating yourself");
 		}
+		process(config);
 		if (config.getList("ForbiddenWords").size() == 0) {
 			List<String> liste = new ArrayList<String>();
 			liste.add("Affenarsch");
-			liste.add("Affenkotstück");
+			liste.add("AffenkotstÃ¼ck");
 			liste.add("Affenmensch");
 			liste.add("Allmachtsdackel");
 			liste.add("Ameisenficker");
@@ -59,8 +62,8 @@ public class Config {
 			liste.add("bangen");
 			liste.add("Berber");
 			liste.add("Birl");
-			liste.add("Blödfisch");
-			liste.add("Blödmusiker");
+			liste.add("BlÃ¶dfisch");
+			liste.add("BlÃ¶dmusiker");
 			liste.add("Bodendompteuse");
 			liste.add("Brunskuh");
 			liste.add("Buckelhur");
@@ -76,7 +79,7 @@ public class Config {
 			liste.add("Dreilochnutte");
 			liste.add("Du Ast!");
 			liste.add("Dumm-Rasseler");
-			liste.add("Dünnschissgurgler");
+			liste.add("DÃ¼nnschissgurgler");
 			liste.add("Eibemme");
 			liste.add("Eichelarschkopf");
 			liste.add("Fitch");
@@ -87,17 +90,17 @@ public class Config {
 			liste.add("Fotzklotz");
 			liste.add("Gargamel");
 			liste.add("Gaylon");
-			liste.add("Gebärfrau");
+			liste.add("GebÃ¤rfrau");
 			liste.add("Geburtsfehlermiss");
 			liste.add("geistiger Tiefflieger");
 			liste.add("Gesichtseintopf");
-			liste.add("Gesichtsgünter");
+			liste.add("GesichtsgÃ¼nter");
 			liste.add("Gesichtsmorph");
 			liste.add("Gnarf");
 			liste.add("Gnogel");
 			liste.add("Grasdackel");
 			liste.add("Gratler");
-			liste.add("Großhirnkastrat");
+			liste.add("GroÃŸhirnkastrat");
 			liste.add("H2O-Kopf");
 			liste.add("Hack ab!");
 			liste.add("Hackfresse");
@@ -119,8 +122,8 @@ public class Config {
 			liste.add("HRSN");
 			liste.add("Huru");
 			liste.add("Hutze");
-			liste.add("Hübi");
-			liste.add("ins Hirn scheißen");
+			liste.add("HÃ¼bi");
+			liste.add("ins Hirn scheiÃŸen");
 			liste.add("Intelligenzverweigerer");
 			liste.add("Kackbatzen");
 			liste.add("Kackstuhl");
@@ -132,13 +135,13 @@ public class Config {
 			liste.add("Knecht Huso");
 			liste.add("Kotlutscher");
 			liste.add("Kotzkannenfressbrett");
-			liste.add("Kotzkrücke");
+			liste.add("KotzkrÃ¼cke");
 			liste.add("Krapfengesicht");
 			liste.add("Kuttenluder");
 			liste.add("Larve");
 			liste.add("Lattenheinrich");
 			liste.add("Lattenschreck");
-			liste.add("Lällebäbbl");
+			liste.add("LÃ¤llebÃ¤bbl");
 			liste.add("Liam");
 			liste.add("Loser");
 			liste.add("mangelbegent");
@@ -158,7 +161,7 @@ public class Config {
 			liste.add("Partyopfer");
 			liste.add("Paselacke");
 			liste.add("Peniskopf");
-			liste.add("Penisprothesenträger");
+			liste.add("PenisprothesentrÃ¤ger");
 			liste.add("Pfeifenheini");
 			liste.add("Pferdefresse");
 			liste.add("Pfingstochse");
@@ -174,14 +177,14 @@ public class Config {
 			liste.add("Rotzpupsi");
 			liste.add("Schlampe");
 			liste.add("Schlabberlappen");
-			liste.add("schleimscheißender Bambusaffe");
+			liste.add("schleimscheiÃŸender Bambusaffe");
 			liste.add("Schmalzgrab");
 			liste.add("Schmalztitte");
 			liste.add("Schmongo");
-			liste.add("Schmönkchen");
+			liste.add("SchmÃ¶nkchen");
 			liste.add("Schmudel");
-			liste.add("schnarchzapfiger Rüsselsack");
-			liste.add("Schüttler");
+			liste.add("schnarchzapfiger RÃ¼sselsack");
+			liste.add("SchÃ¼ttler");
 			liste.add("Senfgurke");
 			liste.add("Sheamus");
 			liste.add("Simbel");
@@ -190,21 +193,21 @@ public class Config {
 			liste.add("Spammailautor");
 			liste.add("Spastard");
 			liste.add("spastophil");
-			liste.add("Späner");
+			liste.add("SpÃ¤ner");
 			liste.add("Spoastie");
 			liste.add("Spongebob");
 			liste.add("Sponk");
 			liste.add("Staubbeutel");
 			liste.add("Steroidbeule");
 			liste.add("Steroidmutant");
-			liste.add("Swarowski-Möse");
+			liste.add("Swarowski-MÃ¶se");
 			liste.add("Tapetengerippe");
 			liste.add("Topmoppel");
-			liste.add("Tüffel");
+			liste.add("TÃ¼ffel");
 			liste.add("Unwerk");
 			liste.add("Vollaffe");
 			liste.add("vollgepisste Strumpfhose");
-			liste.add("vollgeschissene Menschenhülle");
+			liste.add("vollgeschissene MenschenhÃ¼lle");
 			liste.add("Vollmongo");
 			liste.add("Vongo");
 			liste.add("Wachsfresse");
@@ -236,7 +239,7 @@ public class Config {
 			liste.add("analentjungferer");
 			liste.add("analerotiker");
 			liste.add("analfetischist");
-			liste.add("analförster");
+			liste.add("analfÃ¶rster");
 			liste.add("anal-frosch");
 			liste.add("analnegerdildo");
 			liste.add("analratte");
@@ -244,10 +247,10 @@ public class Config {
 			liste.add("aok-chopper");
 			liste.add("armleuchter");
 			liste.add("arsch");
-			liste.add("arschaufreißer");
-			liste.add("arschbackenschänder");
+			liste.add("arschaufreiÃŸer");
+			liste.add("arschbackenschÃ¤nder");
 			liste.add("arschbesamer");
-			liste.add("ärsche");
+			liste.add("Ã¤rsche");
 			liste.add("arschentjungferer");
 			liste.add("arschficker");
 			liste.add("arschgeburt");
@@ -255,12 +258,12 @@ public class Config {
 			liste.add("arschgesicht");
 			liste.add("arschhaarfetischist");
 			liste.add("arschhaarrasierer");
-			liste.add("arschhöhlenforscher");
+			liste.add("arschhÃ¶hlenforscher");
 			liste.add("arschkrampe");
 			liste.add("arschkratzer");
 			liste.add("arschlecker");
 			liste.add("arschloch");
-			liste.add("arschlöcher");
+			liste.add("arschlÃ¶cher");
 			liste.add("arschmade");
 			liste.add("arschratte");
 			liste.add("arschzapfen");
@@ -297,7 +300,7 @@ public class Config {
 			liste.add("bekloppter");
 			liste.add("muttergeficktes");
 			liste.add("beklopter");
-			liste.add("bettnässer");
+			liste.add("bettnÃ¤sser");
 			liste.add("bettpisser");
 			liste.add("bettspaltenficker");
 			liste.add("biatch");
@@ -307,7 +310,7 @@ public class Config {
 			liste.add("bitchnutte");
 			liste.add("bitsch");
 			liste.add("bizzach");
-			liste.add("blödmann");
+			liste.add("blÃ¶dmann");
 			liste.add("blogspoint");
 			liste.add("blow job");
 			liste.add("bohnenfresser");
@@ -320,9 +323,9 @@ public class Config {
 			liste.add("boy love");
 			liste.add("breasts");
 			liste.add("brechfurz");
-			liste.add("bückfleisch");
-			liste.add("bückstück");
-			liste.add("bückvieh");
+			liste.add("bÃ¼ckfleisch");
+			liste.add("bÃ¼ckstÃ¼ck");
+			liste.add("bÃ¼ckvieh");
 			liste.add("buggery");
 			liste.add("bullensohn");
 			liste.add("bummsen");
@@ -365,21 +368,21 @@ public class Config {
 			liste.add("drecksack");
 			liste.add("drecksau");
 			liste.add("dreckschlitz");
-			liste.add("dreckschüppengesicht");
-			liste.add("drecksmösendagmar");
+			liste.add("dreckschÃ¼ppengesicht");
+			liste.add("drecksmÃ¶sendagmar");
 			liste.add("drecksnigger");
 			liste.add("drecksnutte");
 			liste.add("dreckspack");
-			liste.add("dreckstürke");
+			liste.add("dreckstÃ¼rke");
 			liste.add("dreckvotze");
 			liste.add("dumbo");
-			liste.add("dummschwätzer");
+			liste.add("dummschwÃ¤tzer");
 			liste.add("dumpfbacke");
-			liste.add("dünnpfifftrinker");
+			liste.add("dÃ¼nnpfifftrinker");
 			liste.add("eichellecker");
 			liste.add("eierkopf");
 			liste.add("eierlutscher");
-			liste.add("eiswürfelpisser");
+			liste.add("eiswÃ¼rfelpisser");
 			liste.add("ejaculate");
 			liste.add("entenfisterer");
 			liste.add("epilepi");
@@ -387,7 +390,7 @@ public class Config {
 			liste.add("epileppis");
 			liste.add("fagette");
 			liste.add("fagitt");
-			liste.add("fäkalerotiker");
+			liste.add("fÃ¤kalerotiker");
 			liste.add("faltenficker");
 			liste.add("fatass");
 			liste.add("ferkelficker");
@@ -423,7 +426,7 @@ public class Config {
 			liste.add("flachtitte");
 			liste.add("fotze");
 			liste.add("fotzhobel");
-			liste.add("frisösenficker");
+			liste.add("frisÃ¶senficker");
 			liste.add("fritzfink");
 			liste.add("fucked");
 			liste.add("fucker");
@@ -435,8 +438,8 @@ public class Config {
 			liste.add("gay lord");
 			liste.add("geilriemen");
 			liste.add("gesichtsfotze");
-			liste.add("göring");
-			liste.add("großmaul");
+			liste.add("gÃ¶ring");
+			liste.add("groÃŸmaul");
 			liste.add("gummifotzenficker");
 			liste.add("gummipuppenbumser");
 			liste.add("gummisklave");
@@ -448,12 +451,12 @@ public class Config {
 			liste.add("hinterlader");
 			liste.add("hirni");
 			liste.add("hitler");
-			liste.add("hodenbeißer");
+			liste.add("hodenbeiÃŸer");
 			liste.add("hodensohn");
 			liste.add("homo");
 			liste.add("hosenpisser");
-			liste.add("hosenscheißer");
-			liste.add("hühnerficker");
+			liste.add("hosenscheiÃŸer");
+			liste.add("hÃ¼hnerficker");
 			liste.add("huhrensohn");
 			liste.add("hundeficker");
 			liste.add("hundesohn");
@@ -489,13 +492,13 @@ public class Config {
 			liste.add("kitzler fresser");
 			liste.add("klapposkop");
 			liste.add("klolecker");
-			liste.add("klötenlutscher");
+			liste.add("klÃ¶tenlutscher");
 			liste.add("knoblauchfresser");
 			liste.add("konzentrationslager");
 			liste.add("kotgeburt");
 			liste.add("kotnascher");
-			liste.add("kümmeltürke");
-			liste.add("kümmeltürken");
+			liste.add("kÃ¼mmeltÃ¼rke");
+			liste.add("kÃ¼mmeltÃ¼rken");
 			liste.add("lackaffe");
 			liste.add("lebensunwert");
 			liste.add("lesbian");
@@ -507,18 +510,18 @@ public class Config {
 			liste.add("masturbate");
 			liste.add("meat puppet");
 			liste.add("missgeburt");
-			liste.add("mißgeburt");
+			liste.add("miÃŸgeburt");
 			liste.add("mistsau");
-			liste.add("miststück");
+			liste.add("miststÃ¼ck");
 			liste.add("mitternachtsficker");
 			liste.add("mohrenkopf");
-			liste.add("mokkastübchenveredler");
+			liste.add("mokkastÃ¼bchenveredler");
 			liste.add("mongo");
-			liste.add("möse");
-			liste.add("mösenficker");
-			liste.add("mösenlecker");
-			liste.add("mösenputzer");
-			liste.add("möter");
+			liste.add("mÃ¶se");
+			liste.add("mÃ¶senficker");
+			liste.add("mÃ¶senlecker");
+			liste.add("mÃ¶senputzer");
+			liste.add("mÃ¶ter");
 			liste.add("mother fucker");
 			liste.add("mother fucking");
 			liste.add("motherfucker");
@@ -540,7 +543,7 @@ public class Config {
 			liste.add("nuttenstecher");
 			liste.add("nuttentochter");
 			liste.add("ochsenpimmel");
-			liste.add("ölauge");
+			liste.add("Ã¶lauge");
 			liste.add("oral sex");
 			liste.add("penis licker");
 			liste.add("penis licking");
@@ -583,7 +586,7 @@ public class Config {
 			liste.add("pornografie");
 			liste.add("pornoprengel");
 			liste.add("pottsau");
-			liste.add("prärieficker");
+			liste.add("prÃ¤rieficker");
 			liste.add("prick");
 			liste.add("quiff");
 			liste.add("randsteinwichser");
@@ -595,7 +598,7 @@ public class Config {
 			liste.add("roseten putzer");
 			liste.add("roseten schlemmer");
 			liste.add("rosettenhengst");
-			liste.add("rosettenkönig");
+			liste.add("rosettenkÃ¶nig");
 			liste.add("rosettenlecker");
 			liste.add("rosettentester");
 			liste.add("sackfalter");
@@ -605,16 +608,16 @@ public class Config {
 			liste.add("saftarsch");
 			liste.add("sakfalter");
 			liste.add("schamhaarlecker");
-			liste.add("schamhaarschädel");
+			liste.add("schamhaarschÃ¤del");
 			liste.add("schandmaul");
 			liste.add("scheisse");
 			liste.add("scheisser");
 			liste.add("scheissgesicht");
 			liste.add("scheisshaufen");
-			liste.add("scheißhaufen");
+			liste.add("scheiÃŸhaufen");
 			liste.add("schlammfotze");
 			liste.add("schlampe");
-			liste.add("schleimmöse");
+			liste.add("schleimmÃ¶se");
 			liste.add("schlitzpisser");
 			liste.add("schmalspurficker");
 			liste.add("schmeue");
@@ -700,10 +703,41 @@ public class Config {
 			liste.add("zappler");
 			liste.add("zyclon");
 			liste.add("zyklon");
-
 			config.set("ForbiddenWords", liste);
 		}
 		ConfigurationProvider.getProvider(YamlConfiguration.class).save(config, file);
 		return config;
+	}
+
+	private static void process(Configuration pMessagesYML) {
+		for (String key : pMessagesYML.getKeys()) {
+			Object entry = pMessagesYML.get(key);
+			if (entry instanceof LinkedHashMap)
+				process(pMessagesYML.getSection(key));
+			else if (entry instanceof String) {
+				String stringEntry = (String) entry;
+				stringEntry = ChatColor.translateAlternateColorCodes('&', stringEntry);
+				stringEntry = fixColors(stringEntry);
+				pMessagesYML.set(key, ChatColor.translateAlternateColorCodes('&', stringEntry));
+			}
+		}
+	}
+
+	private static String fixColors(String pInput) {
+		String[] splited = pInput.split(" ");
+		String composite = "";
+		String colorCode = "";
+		for (String input : splited) {
+			if (!input.startsWith("Â§"))
+				input = colorCode + input;
+			int index = input.lastIndexOf('Â§');
+			if (index != -1)
+				if (input.length() > index)
+					colorCode = "Â§" + input.charAt(index + 1);
+			composite += " " + input;
+		}
+		if (composite.length() > 0)
+			composite = composite.substring(1);
+		return composite;
 	}
 }
