@@ -1,3 +1,5 @@
+/target/
+/bin/
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -7,9 +9,7 @@ Desktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
-bin/
-.settings/
-dir.buildfile/
+
 # Windows Installer files
 *.cab
 *.msi
@@ -33,13 +33,9 @@ dir.buildfile/
 # Thumbnails
 ._*
 
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
+# Files that might appear on external disk
 .Spotlight-V100
-.TemporaryItems
 .Trashes
-.VolumeIcon.icns
 
 # Directories potentially created on remote AFP share
 .AppleDB
@@ -47,7 +43,23 @@ dir.buildfile/
 Network Trash Folder
 Temporary Items
 .apdisk
-/bin/
-/target/
-.project
+.metadata/*
+.recommenders/*
+/Clans/bin/*
+/Clans/bin/.classpath
+/Clans/bin/.project
+/PartyAndFriends/bin/*
+/PartyAndFriends/bin/.classpath
+/PartyAndFriends/bin/.project
+target/
+**/target/
 .classpath
+.project
+**/.classpath
+**/.project
+.settings/
+**/.settings/
+**privatebuilds.xml
+.idea/*
+
+Party-and-Friends-For-Bungeecord-MySQL.iml
