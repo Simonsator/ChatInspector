@@ -724,10 +724,10 @@ public class Config {
 	}
 
 	private static String fixColors(String pInput) {
-		String[] splited = pInput.split(" ");
+		String[] split = pInput.split(" ");
 		String composite = "";
 		String colorCode = "";
-		for (String input : splited) {
+		for (String input : split) {
 			if (!input.startsWith("§"))
 				input = colorCode + input;
 			int index = input.lastIndexOf('§');
@@ -738,6 +738,10 @@ public class Config {
 		}
 		if (composite.length() > 0)
 			composite = composite.substring(1);
+		if (pInput.endsWith(" "))
+			composite += ' ';
 		return composite;
 	}
+
+
 }
